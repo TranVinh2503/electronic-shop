@@ -1,0 +1,5 @@
+color text bold : #88AB8E
+background color : #EEE7DA
+color text regular : #AFC8AD
+bright color: #F2F1EB
+green bold: #163020

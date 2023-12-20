@@ -1,0 +1,116 @@
+*,html{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    outline: none;
+    font-family: 'Merriweather', serif;
+    scroll-behavior: smooth;
+}
+#logo img{
+    margin-left: 15px;
+    max-width: 50px;
+    max-height: 50px;
+}
+p,h1,h2,h3,h4,h5, .button,.row {
+    margin: 20px;
+    color: #200E3A;
+    
+}
+a {
+    color:  #88AB8E;
+    transition: 0,5s ease;
+}
+.arrow,.cart_icon{
+    position: fixed;
+    width: 50px;
+    height: 50px;
+    bottom: 50px;
+    right: 50px;
+    text-decoration: none;
+    text-align: center;
+    line-height: 50px;
+}
+.cart_icon{
+    width: 50px;
+    height: 50px;
+    bottom: 110px;
+    right: 50px;
+    background-color: #FFF7D4;
+    border-radius: 50%;
+    color: #200E3A;
+}
+.cart{
+    position: fixed;
+    top: 0;
+    right: -100%;
+    width:350px;
+    height: 100vh;
+    background: #88AB8E;
+    box-shadow: -2px 0 4px hsl(0 4% 15%/10%);
+    z-index: 100;
+    text-align: center;
+    transition: 0.5s;
+}
+/* left: calc(100% - 350px); */
+
+.cart.active{
+    right:0;
+    left: calc(100% - 350px);
+}
+.cart-title{
+    text-align: center;
+    font-size: 1.5rem;
+    font-weight: 600;
+    margin-top: 2rem;
+}
+.cart-box{
+    display: grid;
+    grid-template-columns: 30% 45% 10%;
+    align-items: center;
+    gap: 1rem;
+    margin: 0;
+
+}
+.cart-img{
+    width: 100px;
+    height: 100px;
+    object-fit: contain;
+    margin: 5px;
+}
+.detail-box{
+    display: grid;
+    row-gap: 0.2rem;
+}
+.cart-product-title{
+    font-size: 1rem;
+    text-transform: uppercase;
+}
+.cart-price{
+    font-weight: 500;
+}
+.cart-quantity{
+    border: 1px solid #200E3A;
+    outline-color: #88AB8E;
+    font-size: 1rem;
+    text-align: center;
+    width: 2.4rem;
+}
+.cart-remove{
+    font-size: 24px;
+    cursor: pointer;
+}
+.total{
+    display: flex;
+    justify-content: flex-end;
+    margin-top: 1.5rem;
+    border-top: 1px solid #AFC8AD;
+}
+.total-price{
+    margin-left:0.5rem;
+}
+#close-cart{
+    position: absolute;
+    top: 1rem;
+    right: 0.8rem;
+    font-size: 2rem;
+}

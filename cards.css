@@ -1,0 +1,20 @@
+#product-cards {
+  margin-top: 100px;
+}
+.checked {
+  color: #ffc800;
+}
+#product-cards .card h2 {
+  font-size: 20px;
+}
+#product-cards .card h2 span {
+  float: right;
+  cursor: pointer;
+}
+@media screen and (max-width: 1000px) {
+  #product-cards .card h3 {
+    font-size: 18px;
+  }}
+#other-cards .card{
+    background-color: #a9a9a92b;
+}

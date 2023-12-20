@@ -1,0 +1,27 @@
+/* home */
+.home{
+    height: 80hv;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
+    position: relative;
+    background-color: #a9a9a92b;
+    z-index: 0;
+}
+.home .img{
+    flex: 1 1 300px;
+}
+.home .img img{
+    width: 100%;
+}
+/* home */
+/* offer */
+#offer{
+    margin-top: 100px;
+}
+#offer i{
+    font-size: 32px;
+    margin: 20px;
+}
+/* offer */
