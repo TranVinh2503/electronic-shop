@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -63,9 +64,9 @@
                 </ul>
                 <div class="icons">
                     <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-                        <li class="nav-item"><a class="nav-link active" href="login.html"><img src="" alt="" />Login</a></li>
-                        <li class="nav-item"><a class="nav-link" href="register.html"><img src=""
-                                    alt="" />Register</a>
+                        <li class="nav-item"><a class="nav-link active" href="login.html"><img src="" alt="" />Login</a>
+                        </li>
+                        <li class="nav-item"><a class="nav-link" href="register.html"><img src="" alt="" />Register</a>
                         </li>
                     </ul>
                 </div>
@@ -80,18 +81,21 @@
             </div>
             <div class="col-md-7 py-3 py-md-0" id="side2">
                 <h3 class="text-center"><strong>Account login</strong></h3>
-                    <form>
-                        <div class="form-group">
-                          <label for="exampleInputEmail1">Email address</label>
-                          <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email">
-                          <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
-                        </div>
-                        <div class="form-group">
-                          <label for="exampleInputPassword1">Password</label>
-                          <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password">
-                        </div>
-                      </form>
-                <p class="text-center"><button type="button" class="btn btn-success button">Login</button>
+                <form>
+                    <div class="form-group">
+                        <label for="exampleInputEmail1">Email address</label>
+                        <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp"
+                            placeholder="Enter email">
+                        <span class="form-message"></span>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="exampleInputPassword1">Password</label>
+                        <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password">
+                        <span class="form-message"></span>
+                    </div>
+                </form>
+                <p class="text-center"><button type="button" id="lo-gin" class="btn btn-success button">Login</button>
                 <p class="text-center">Forgot Password <a href="#">Click Here</a></p>
                 </p>
             </div>
@@ -163,8 +167,19 @@
 
     <a href="#" class="arrow"><i><img src="./assets/arrow.png" alt="" /></i></a>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
-        integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"
-        crossorigin="anonymous"></script>
+        integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous">
+        </script>
+    <script src="./js/login.js"></script>
+    <script>
+        Validator({
+            form: '#login',
+            errorSelector: '.form-message',
+            rules: [
+                Validator.isEmail('#exampleInputEmail1'),
+                Validator.minLength('#exampleInputPassword1', 6),
+            ]
+        });
+    </script>
 </body>
 
 </html>

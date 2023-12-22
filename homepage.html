@@ -91,8 +91,9 @@
     </div>
     <!-- Buy Button -->
     <button type="button" id="openModalBtn" class="btn btn-success" data-toggle="modal"
-      data-target="#exampleModal">Checkout</button>
-    <i class="bx bx-x" id="close-cart"></i>
+      data-target="#checkoutModal">Checkout</button>
+    <i class="bx bx-x close-cart position-absolute top-0 end-0 fs-4 mt-3 me-3 cursor-pointer" id="close-cart"></i>
+
   </div>
   <!-- home content -->
   <section class="home">
@@ -131,7 +132,8 @@
             <h2 class="price">
               $1000
               <span>
-                <i class='bx bx-cart-add add-cart'></i>
+                <button type="button" class="btn btn-light btn-sm">Detail</button>
+                <i class='bx bx-cart-add add-cart btn-sm'></i>
               </span>
             </h2>
           </div>
@@ -152,7 +154,8 @@
             <h2 class="price">
               $100
               <span>
-                <i class='bx bx-cart-add add-cart'></i>
+                <button type="button" class="btn btn-light btn-sm">Detail</button>
+                <i class='bx bx-cart-add add-cart btn-sm'></i>
               </span>
             </h2>
           </div>
@@ -173,7 +176,8 @@
             <h2 class="price">
               $200
               <span>
-                <i class='bx bx-cart-add add-cart'></i>
+                <button type="button" class="btn btn-light btn-sm">Detail</button>
+                <i class='bx bx-cart-add add-cart btn-sm'></i>
               </span>
             </h2>
           </div>
@@ -194,7 +198,8 @@
             <h2 class="price">
               $300
               <span>
-                <i class='bx bx-cart-add add-cart'></i>
+                <button type="button" class="btn btn-light btn-sm">Detail</button>
+                <i class='bx bx-cart-add add-cart btn-sm'></i>
               </span>
             </h2>
           </div>
@@ -217,7 +222,8 @@
             <h2 class="price">
               $1000
               <span>
-                <i class='bx bx-cart-add add-cart'></i>
+                <button type="button" class="btn btn-light btn-sm">Detail</button>
+                <i class='bx bx-cart-add add-cart btn-sm'></i>
               </span>
             </h2>
           </div>
@@ -238,7 +244,8 @@
             <h2 class="price">
               $100
               <span>
-                <i class='bx bx-cart-add add-cart'></i>
+                <button type="button" class="btn btn-light btn-sm">Detail</button>
+                <i class='bx bx-cart-add add-cart btn-sm'></i>
               </span>
             </h2>
           </div>
@@ -259,7 +266,8 @@
             <h2 class="price">
               $200
               <span>
-                <i class='bx bx-cart-add add-cart'></i>
+                <button type="button" class="btn btn-light btn-sm">Detail</button>
+                <i class='bx bx-cart-add add-cart btn-sm'></i>
               </span>
             </h2>
           </div>
@@ -280,7 +288,8 @@
             <h2 class="price">
               $300
               <span>
-                <i class='bx bx-cart-add add-cart'></i>
+                <button type="button" class="btn btn-light btn-sm">Detail</button>
+                <i class='bx bx-cart-add add-cart btn-sm'></i>
               </span>
             </h2>
           </div>
@@ -290,13 +299,39 @@
   </div>
   <!-- product cards -->
 
+
+  <!-- The Product Detail Modal -->
+  <!-- Modal -->
+  <div class="modal fade" id="productModal" tabindex="-1" aria-labelledby="productModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="productModalLabel">Product Detail</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <i class="bx bx-x" id="close-cart"></i>
+          </button>
+        </div>
+        <div class="modal-body">
+          <div class="row">
+            <div class="col-md-6">
+              <img id="productImage" src="" alt="Product Image" class="img-fluid">
+            </div>
+            <div class="col-md-6" id="productDetails">
+              <!-- Thông tin sản phẩm sẽ được thêm vào đây -->
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
   <!-- The Modal -->
-  <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+  <div class="modal fade" id="checkoutModal" tabindex="-1" role="dialog" aria-labelledby="checkoutModalLabel"
     aria-hidden="true">
     <div class="modal-dialog" role="document">
       <div class="modal-content">
         <div class="modal-header">
-          <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+          <h5 class="modal-title" id="checkoutModalLabel">Checkout Process</h5>
           <button type="button" class="close" data-dismiss="modal" aria-label="Close">
             <i class="bx bx-x" id="close-cart"></i>
           </button>
@@ -306,40 +341,36 @@
             <h3>Shipping Information</h3>
             <!-- Input fields for shipping information -->
             <div class="form-group">
-              <input type="text" class="form-control" id="fullName" placeholder="Full Name">
+              <input type="text" class="form-control mb-2" id="fullName" placeholder="Full Name">
             </div>
             <div class="form-group">
-              <input type="text" class="form-control" id="address" placeholder="Address">
+              <input type="text" class="form-control mb-2" id="address" placeholder="Address">
             </div>
             <div class="form-group">
-              <input type="text" class="form-control" id="city" placeholder="City">
+              <input type="text" class="form-control mb-2" id="city" placeholder="City">
             </div>
             <!-- Add more fields as needed -->
             <h3>Payment Information</h3>
             <!-- Input fields for payment information -->
             <div class="form-group">
-              <input type="text" class="form-control" id="cardNumber" placeholder="Card Number">
-            </div>
-            <div class="form-group">
-              <input type="text" class="form-control" id="expiryDate" placeholder="Expiry Date">
-            </div>
-            <div class="form-group">
-              <input type="text" class="form-control" id="cvv" placeholder="CVV">
+              <input type="number" class="form-control mb-2" id="cardNumber" placeholder="Card Number">
             </div>
             <!-- Add more fields as needed -->
             <h3>Order Summary</h3>
             <!-- Display order summary here -->
             <div id="productDetails">
-              
+
             </div>
-            <strong><p id="totalCost"></p></strong>
-            
+            <strong>
+              <p id="totalCost" class="text-center"></p>
+            </strong>
+
             <!-- Add more details as needed -->
           </form>
         </div>
         <div class="modal-footer">
           <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-          <button id="confirmOrderBtn" class="btn btn-primary">Confirm Order</button>
+          <button id="confirmOrderBtn" class="btn btn-primary" data-dismiss="modal">Confirm Order</button>
         </div>
       </div>
     </div>
@@ -471,6 +502,8 @@
   <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
   <!-- Thư viện Bootstrap JavaScript -->
   <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/2.11.6/umd/popper.min.js"></script>
+
 
 </body>
 
