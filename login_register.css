@@ -1,41 +1,50 @@
-#login,#register{
-    width: 65%;
-    height:70vh;
-    margin-top: 35px;
-    margin-bottom: 35px;
-    border-radius: 10px;
-    box-shadow: #163020 0px 48px 100px 0px;
+#login,
+#register {
+  width: 65%;
+  height: 70vh;
+  margin-top: 35px;
+  margin-bottom: 35px;
+  border-radius: 10px;
+  box-shadow: #163020 0px 48px 100px 0px;
 }
-#register,#register #side2{
-    height:100vh;
+#register,
+#register #side2 {
+  height: 100vh;
 }
-#register #side2{
-    background-color:#F2F1EB ;
-    border-radius: 10px;
+#register #side2 {
+  background-color: #f2f1eb;
+  border-radius: 10px;
 }
-#side1 h3{
-    margin-top: 200px;
+#side1 h3 {
+  margin-top: 200px;
 }
-#side2{
-    background-color:#F2F1EB ;
-    height: 70vh;
-    border-radius: 10px;
+#side2 {
+  background-color: #f2f1eb;
+  height: 70vh;
+  border-radius: 10px;
 }
-#side2 h3{
-    margin-top: 30px;
+#side2 h3 {
+  margin-top: 30px;
 }
-@media screen and (max-width:911px) {
-    .input2 input{
-        width: 250px;
-    }
-    
+@media screen and (max-width: 911px) {
+  .input2 input {
+    width: 250px;
+  }
 }
-@media screen and (max-width:765px) {
-    .input2 input{
-        width: 260px;
-    }
-    #side2{
-        height:40vh;
-    }
-    
+@media screen and (max-width: 765px) {
+  .input2 input {
+    width: 260px;
+  }
+  #side2 {
+    height: 40vh;
+  }
+}
+.form-group.invalid .form-message {
+  color: #f33a58;
+}
+
+.form-message {
+  font-size: 0.8rem;
+  line-height: 1.6rem;
+  padding: 4px 0 0;
 }

@@ -2,7 +2,8 @@ window.addEventListener("load", (event) => {
   let cartIcon = document.querySelector("#cart_icon");
   let cart = document.querySelector(".cart");
   let closeCart = document.querySelector("#close-cart");
-
+  var myModal = new bootstrap.Modal(document.getElementById("checkoutModal"));
+  let confirmOrderBtn = document.querySelector("#confirmOrderBtn");
   // Open
   cartIcon.addEventListener("click", () => {
     cart.classList.add("active");
@@ -12,6 +13,12 @@ window.addEventListener("load", (event) => {
     cart.classList.remove("active");
   });
 
+  confirmOrderBtn.addEventListener("click", () => {
+    alert("Your order has been placed!");
+    console.log(myModal);
+    myModal.hide();
+  });
+
   // Cart Working
   if (document.readyState == "loading") {
     document.addEventListener("DOMContentLoaded", ready);
@@ -19,6 +26,42 @@ window.addEventListener("load", (event) => {
     ready();
   }
 
+  function saveLoggedInUserToLocalStorage(email, token) {
+    localStorage.setItem("loggedInUser", JSON.stringify({ email, token }));
+  }
+
+  function getLoggedInUserFromLocalStorage() {
+    const loggedInUser = localStorage.getItem("loggedInUser");
+    return loggedInUser ? JSON.parse(loggedInUser) : null;
+  }
+
+  function logout() {
+    localStorage.removeItem("loggedInUser");
+  }
+
+  var detailButtons = document.querySelectorAll(".btn-light");
+
+  detailButtons.forEach(function (button) {
+    button.addEventListener("click", function () {
+      var card = this.closest(".card");
+      var productName = card.querySelector(".product-title").textContent;
+      var productDescription = card.querySelector("p").textContent;
+      var productPrice = card.querySelector(".price").childNodes[0].textContent;
+      var productImage = card.querySelector(".product-img").src;
+      var productDetails = document.getElementById("productDetails");
+      productDetails.innerHTML = `
+        <h4>${productName}</h4>
+        <p>${productDescription}</p>
+        <p>${productPrice}</p>
+      `;
+      var productImageElement = document.getElementById("productImage");
+      productImageElement.src = productImage;
+      var productModal = new bootstrap.Modal(
+        document.getElementById("productModal")
+      );
+      productModal.show();
+    });
+  });
   function ready() {
     // Remove Items from cart
     var removeCartButtons = document.getElementsByClassName("cart-remove");
@@ -38,15 +81,6 @@ window.addEventListener("load", (event) => {
       var button = addCart[i];
       button.addEventListener("click", addCartClicked);
     }
-    
-  }
-  
-  function buyButtonClicked(event) {
-    var cartContent = document.getElementsByClassName("cart-content")[0];
-    while (cartContent.hasChildNodes()) {
-      cartContent.removeChild(cartContent.firstChild);
-    }
-    updateTotal();
   }
   // Remove Items From Cart
   function removeCartItem(event) {
@@ -141,26 +175,22 @@ window.addEventListener("load", (event) => {
       var product = products[i];
 
       var productDiv = document.createElement("div");
-      productDiv.classList.add("product-info");
+      productDiv.classList.add("row", "mb-2");
+      var title = document.createElement("div");
+      title.classList.add("col-4");
 
-      var title = document.createElement("h6");
+      var price = document.createElement("div");
+      price.classList.add("col-4", "text-end");
+      var quantity = document.createElement("div");
+      quantity.classList.add("col-4", "text-end");
       title.textContent = "Product: " + product.title;
-
-      var price = document.createElement("p");
       price.textContent = "Price: " + product.price;
-
-      var quantity = document.createElement("p");
       quantity.textContent = "Quantity: " + product.quantity;
-
       productDiv.appendChild(title);
       productDiv.appendChild(price);
       productDiv.appendChild(quantity);
-
-      // Thêm phần tử div chứa thông tin sản phẩm vào phần tử productDetails
       productDetails.appendChild(productDiv);
     }
-
-    // Cập nhật tổng chi phí
     document.getElementById("totalCost").innerText =
       "Total Price: $" + totalCost;
   }
