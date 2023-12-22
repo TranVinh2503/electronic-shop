@@ -22,7 +22,6 @@ window.addEventListener("load", (event) => {
   function ready() {
     // Remove Items from cart
     var removeCartButtons = document.getElementsByClassName("cart-remove");
-    console.log(removeCartButtons);
     for (var i = 0; i < removeCartButtons.length; i++) {
       var button = removeCartButtons[i];
       button.addEventListener("click", removeCartItem);
@@ -39,13 +38,10 @@ window.addEventListener("load", (event) => {
       var button = addCart[i];
       button.addEventListener("click", addCartClicked);
     }
-    // Buy Button work
-    document
-      .getElementsByClassName("btn-success")[0]
-      .addEventListener("click", buyButtonClicked);
+    
   }
-  function buyButtonClicked() {
-    alert("Your Order is placed");
+  
+  function buyButtonClicked(event) {
     var cartContent = document.getElementsByClassName("cart-content")[0];
     while (cartContent.hasChildNodes()) {
       cartContent.removeChild(cartContent.firstChild);
@@ -81,7 +77,6 @@ window.addEventListener("load", (event) => {
     addProductToCart(title, price, productImg);
     updateTotal();
   }
-
   function addProductToCart(title, price, productImg) {
     var cartShopBox = document.createElement("div");
     cartShopBox.classList.add("cart-box");
@@ -110,22 +105,63 @@ window.addEventListener("load", (event) => {
       .getElementsByClassName("cart-quantity")[0]
       .addEventListener("change", quantityChanged);
   }
-
+  let total = 0;
   // Update Total
   function updateTotal() {
     var cartContent = document.getElementsByClassName("cart-content")[0];
     var cartBoxes = cartContent.getElementsByClassName("cart-box");
-    var total = 0;
+    var products = [];
     for (var i = 0; i < cartBoxes.length; i++) {
       var cartBox = cartBoxes[i];
+      var title =
+        cartBox.getElementsByClassName("cart-product-title")[0].innerText;
       var priceElement = cartBox.getElementsByClassName("cart-price")[0];
       var quantityElement = cartBox.getElementsByClassName("cart-quantity")[0];
       var price = parseFloat(priceElement.innerText.replace("$", ""));
       var quantity = quantityElement.value;
       total = total + price * quantity;
+      const newProduct = { title: title, quantity: quantity, price: price };
+      products.push(newProduct);
     }
     // If price contain some Cents Value
     total = Math.round(total * 100) / 100;
     document.getElementsByClassName("total-price")[0].innerText = "$" + total;
+    // Open modal and update content when button is clicked
+    document
+      .getElementById("openModalBtn")
+      .addEventListener("click", function () {
+        updateModalContent(products, total);
+      });
+  }
+  // Function to update modal content with dynamic data
+  function updateModalContent(products, totalCost) {
+    var productDetails = document.getElementById("productDetails");
+    productDetails.innerHTML = "";
+    for (var i = 0; i < products.length; i++) {
+      var product = products[i];
+
+      var productDiv = document.createElement("div");
+      productDiv.classList.add("product-info");
+
+      var title = document.createElement("h6");
+      title.textContent = "Product: " + product.title;
+
+      var price = document.createElement("p");
+      price.textContent = "Price: " + product.price;
+
+      var quantity = document.createElement("p");
+      quantity.textContent = "Quantity: " + product.quantity;
+
+      productDiv.appendChild(title);
+      productDiv.appendChild(price);
+      productDiv.appendChild(quantity);
+
+      // Thêm phần tử div chứa thông tin sản phẩm vào phần tử productDetails
+      productDetails.appendChild(productDiv);
+    }
+
+    // Cập nhật tổng chi phí
+    document.getElementById("totalCost").innerText =
+      "Total Price: $" + totalCost;
   }
 });
